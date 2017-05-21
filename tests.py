@@ -156,4 +156,4 @@ def test_choices():
     class TestChoicesChild(TestChoices):
         c = (2, "c")
 
-    print(TestChoicesChild.c)
+    print((TestChoicesChild.c))

@@ -35,11 +35,11 @@ class EasyChoiceMeta(type):
                 choices[choice_name] = kls._choices[choice_name]
 
         # Get all the attributes from current class.
-        for choice_name, val in attrs.items():
+        for choice_name, val in list(attrs.items()):
             if isinstance(val, tuple):
                 choices[choice_name] = val
 
-        for choice_name, val in choices.items():
+        for choice_name, val in list(choices.items()):
             values.append(val[0])
             try:
                 label = val[1]
@@ -49,7 +49,7 @@ class EasyChoiceMeta(type):
             attrs[choice_name] = Choice(value=val[0], label=label)
 
         attrs["_choices"] = choices
-        attrs["values"] = choices.values()
+        attrs["values"] = list(choices.values())
         attrs["choices"] = values
         attrs["labels"] = labels
 
